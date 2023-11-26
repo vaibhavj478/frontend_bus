@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { Route, Routes } from "react-router-dom";
+
+import BusSeatSelection from "./pages/BusSeatSelection";
+import NotFound from "./pages/NotFound";
+
+
+import BusTicketQr from "./pages/BusTicketQr";
+// toster
+// import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import QRScanner from "./pages/QRScanner";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Navbar /> */}
+
+      <Routes>
+        <Route path="/" element={<BusSeatSelection />} />
+        <Route path="/qr-code/:id" element={<BusTicketQr />} />
+        <Route path="/scan" element={<QRScanner />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
